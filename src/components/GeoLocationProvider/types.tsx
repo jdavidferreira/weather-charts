@@ -1,9 +1,5 @@
 import { ReactNode } from 'react'
-
-export type Position = {
-  latitude: number
-  longitude: number
-}
+import { Position } from '@/types'
 
 export type GeoLocationContextValue = {
   position: Position | null

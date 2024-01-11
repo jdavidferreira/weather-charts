@@ -1,11 +1,8 @@
 'use client'
 
 import { createContext, useState, useEffect, useContext, useMemo } from 'react'
-import {
-  GeoLocationContextValue,
-  GeoLocationProviderProps,
-  Position,
-} from './types'
+import { GeoLocationContextValue, GeoLocationProviderProps } from './types'
+import { Position } from '@/types'
 
 const GeoLocationContext = createContext<GeoLocationContextValue>({
   position: null,
