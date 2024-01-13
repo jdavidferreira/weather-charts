@@ -1,5 +1,6 @@
 import ky from 'ky'
 import { Position } from '../types'
+import { AirPollutionResponse, DateInterval } from './types'
 
 export const api = ky.create({
   prefixUrl: 'https://api.openweathermap.org/data/2.5/',
@@ -13,12 +14,21 @@ export function getCommonSearchParams(position: Position) {
   }
 }
 
-export async function fetchCurrentAirPollution(position: Position) {
-  const response = await api
-    .get('air_pollution', {
-      searchParams: getCommonSearchParams(position),
+type FetchHistoricalAirPollutionParams = {
+  position: Position
+  dateInterval: DateInterval
+}
+
+export async function fetchHistoricalAirPollution({ position, dateInterval }: FetchHistoricalAirPollutionParams) {
+  const response = (await api
+    .get('air_pollution/history', {
+      searchParams: {
+        ...getCommonSearchParams(position),
+        start: dateInterval.start,
+        end: dateInterval.end,
+      },
     })
-    .json()
+    .json()) as AirPollutionResponse
 
   return response
 }
