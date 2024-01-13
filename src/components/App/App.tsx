@@ -1,5 +1,7 @@
 'use client'
-import { useGeoLocation } from '../GeoLocationProvider/GeoLocationProvider'
+
+import { useGeoLocation } from '../GeoLocationProvider'
+import { AirPollutionChart } from '../AirPollutionChart'
 
 export const App = () => {
   const { position } = useGeoLocation()
@@ -10,6 +12,7 @@ export const App = () => {
         <div>
           <p>Latitude: {position.latitude}</p>
           <p>Longitude: {position.longitude}</p>
+          <AirPollutionChart />
         </div>
       ) : (
         'Loading position...'

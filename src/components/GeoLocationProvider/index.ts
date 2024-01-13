@@ -1,1 +1,1 @@
-export { GeoLocationProvider } from './GeoLocationProvider'
+export { GeoLocationProvider, useGeoLocation } from './GeoLocationProvider'
