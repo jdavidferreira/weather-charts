@@ -1,5 +1,5 @@
 import ky from 'ky'
-import { Position } from './types'
+import { Position } from '../types'
 
 export const api = ky.create({
   prefixUrl: 'https://api.openweathermap.org/data/2.5/',
