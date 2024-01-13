@@ -9,7 +9,7 @@ const queryClient = new QueryClient()
 
 export default function Home() {
   return (
-    <main className="w-screen py-8 px-6">
+    <main className="w-full py-8 px-6">
       <GeoLocationProvider>
         <QueryClientProvider client={queryClient}>
           <App />
