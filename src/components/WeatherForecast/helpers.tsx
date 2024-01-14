@@ -4,8 +4,14 @@ import { format } from 'date-fns'
 
 export function processData(data?: FiveDayWeatherForecastResponse) {
   if (!data) {
-    return {}
+    return {
+      processedData: [],
+      dayLabels: [],
+    }
   }
+
+  // to add the ReferenceLines
+  const dayLabelSet: Set<string> = new Set()
 
   const processedData: TransformedDataItem[] = data.list.map((item) => {
     let date = new Date(item.dt * 1000)
@@ -13,19 +19,27 @@ export function processData(data?: FiveDayWeatherForecastResponse) {
     const userTimezoneOffset = date.getTimezoneOffset() * 60000
     date = new Date(date.getTime() + userTimezoneOffset)
 
-    const dateStr = format(date, 'dd MMM yyyy')
-    const hourStr = format(date, 'haaa')
     const dayLabel = format(date, 'eeee dd')
+    const hourLabel = format(date, 'haaa')
+
+    dayLabelSet.add(dayLabel)
 
     return {
       temp: item.main.temp,
-      pop: item.pop,
+      pop: item.pop * 100,
       date,
-      dateStr,
       dayLabel,
-      hourStr,
+      hourLabel,
     }
   })
 
-  return { processedData }
+  return { processedData, dayLabels: Array.from(dayLabelSet) }
+}
+
+export function formatTemperature(temp: string) {
+  return `${temp} C°` as const
+}
+
+export function formatProbability(percentage: string) {
+  return `${percentage}%` as const
 }

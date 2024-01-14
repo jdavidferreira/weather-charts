@@ -5,11 +5,11 @@ import { GeoLocationContextValue, GeoLocationProviderProps } from './types'
 import { Position } from '@/types'
 
 const GeoLocationContext = createContext<GeoLocationContextValue>({
-  position: null,
+  position: undefined,
 })
 
 export const GeoLocationProvider = ({ children }: GeoLocationProviderProps) => {
-  const [position, setPosition] = useState<Position | null>(null)
+  const [position, setPosition] = useState<Position>()
 
   useEffect(() => {
     const getCurrentPosition = () => {
@@ -31,20 +31,14 @@ export const GeoLocationProvider = ({ children }: GeoLocationProviderProps) => {
 
   const contextValue = useMemo(() => ({ position }), [position])
 
-  return (
-    <GeoLocationContext.Provider value={contextValue}>
-      {children}
-    </GeoLocationContext.Provider>
-  )
+  return <GeoLocationContext.Provider value={contextValue}>{children}</GeoLocationContext.Provider>
 }
 
 export const useGeoLocation = () => {
   const context = useContext(GeoLocationContext)
 
   if (!context) {
-    throw new Error(
-      `useGeoLocation must be used within a ${GeoLocationProvider.name}`
-    )
+    throw new Error(`useGeoLocation must be used within a ${GeoLocationProvider.name}`)
   }
 
   return context

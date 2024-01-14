@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import { Position } from '@/types'
 
 export type GeoLocationContextValue = {
-  position: Position | null
+  position?: Position
 }
 
 export type GeoLocationProviderProps = {

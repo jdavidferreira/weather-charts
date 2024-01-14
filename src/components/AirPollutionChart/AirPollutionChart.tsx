@@ -37,7 +37,7 @@ export const AirPollutionChart = () => {
 
   return (
     <div className="flex flex-col gap-6">
-      <h2 className="text-xl text-slate-300 font-bold">Air Pollution in the last 3 months</h2>
+      <h2 className="text-xl text-slate-300 font-bold">Air Pollution in the last 3 months 💨</h2>
       <ResponsiveContainer width="100%" height={450}>
         {query.isLoading ? (
           <div className="w-full h-full dark:bg-gray-800 animate-pulse rounded-md flex items-center justify-center">
@@ -53,6 +53,7 @@ export const AirPollutionChart = () => {
             />
             <YAxis
               label={{ value: 'Сoncentration of CO (μg/m3)', angle: -90, position: 'insideBottomLeft', offset: 10 }}
+              domain={['auto', 'auto']}
             />
             <Legend
               onClick={({ dataKey }) => {
