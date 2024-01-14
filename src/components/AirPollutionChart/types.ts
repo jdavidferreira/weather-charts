@@ -12,6 +12,7 @@ export type Category = 'co' | 'no' | 'no2' | 'o3' | 'so2' | 'pm2_5' | 'pm10' | '
 export type TransformedDataItem = {
   date: Date
   dayStr: string
+  formattedDate: string
   count: number
 } & AirPollutionResponseListItem['components'] &
   AirPollutionResponseListItem['main']

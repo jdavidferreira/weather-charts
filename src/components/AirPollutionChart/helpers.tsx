@@ -17,6 +17,11 @@ export function processData(data?: AirPollutionResponse) {
   data.list.forEach((item) => {
     const date = parse(String(item.dt), 't', new Date())
     const dayStr = format(date, 'yyyyMMdd')
+    const formattedDate = date.toLocaleDateString(undefined, {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    })
 
     const isFirstDayOfMonth = date.getDate() === 1
 
@@ -28,6 +33,7 @@ export function processData(data?: AirPollutionResponse) {
       dataByDay[dayStr] = {
         date,
         dayStr,
+        formattedDate,
         count: 1,
         aqi: item.main.aqi,
         co: item.components.co,

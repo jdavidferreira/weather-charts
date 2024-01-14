@@ -120,13 +120,7 @@ const CustomTooltip = (props: TooltipProps<any, any> & { activeCategory: Categor
       <p>
         Air Quality Index: {payload.aqi} ({airQualityIndexMap[payload.aqi]})
       </p>
-      <p>
-        {payload.date.toLocaleDateString(undefined, {
-          day: 'numeric',
-          month: 'long',
-          year: 'numeric',
-        })}
-      </p>
+      <p>{payload.formattedDate}</p>
     </div>
   )
 }
