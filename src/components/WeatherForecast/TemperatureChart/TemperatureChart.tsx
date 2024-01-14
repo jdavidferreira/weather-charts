@@ -3,6 +3,7 @@ import { useGeoLocation } from '../../GeoLocationProvider/GeoLocationProvider'
 import { formatTemperature } from '../helpers'
 import { useWeatherForecastData } from '../useWeatherForecastData'
 import { CustomTooltip } from '../CustomTooltip'
+import { LoadingBox } from '@/components/LoadingBox'
 
 export const TemperatureChart = () => {
   const { position } = useGeoLocation()
@@ -16,9 +17,7 @@ export const TemperatureChart = () => {
       <h2 className="text-xl text-slate-300 font-bold">{name} ☀️</h2>
       <ResponsiveContainer width="100%" height={450}>
         {query.isLoading ? (
-          <div className="w-full h-full dark:bg-gray-800 animate-pulse rounded-md flex items-center justify-center">
-            Loading...
-          </div>
+          <LoadingBox />
         ) : (
           <LineChart data={query.data?.processedData}>
             <XAxis xAxisId="0" dataKey="hour" interval={0} tick={{ fontSize: 9 }} />

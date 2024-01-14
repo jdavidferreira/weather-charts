@@ -16,6 +16,7 @@ import { useGeoLocation } from '../GeoLocationProvider/GeoLocationProvider'
 import { fetchHistoricalAirPollution } from '@/services/airPollutionService'
 import { getDateInterval, processData, categoriesGraphLineDataMap, airQualityIndexMap } from './helpers'
 import { Category, TransformedDataItem } from './types'
+import { LoadingBox } from '../LoadingBox'
 
 export const AirPollutionChart = () => {
   const { position } = useGeoLocation()
@@ -40,9 +41,7 @@ export const AirPollutionChart = () => {
       <h2 className="text-xl text-slate-300 font-bold">Air Pollution in the last 3 months 💨</h2>
       <ResponsiveContainer width="100%" height={450}>
         {query.isLoading ? (
-          <div className="w-full h-full dark:bg-gray-800 animate-pulse rounded-md flex items-center justify-center">
-            Loading...
-          </div>
+          <LoadingBox />
         ) : (
           <LineChart data={processedData}>
             <XAxis
