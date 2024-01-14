@@ -1,4 +1,4 @@
-import { AirPollutionResponseListItem } from '@/services/types'
+import { AirPollutionResponseListItem } from '@/services/airPollutionService/types'
 import { ReactNode } from 'react'
 
 export type CategoryGraphLineData = {

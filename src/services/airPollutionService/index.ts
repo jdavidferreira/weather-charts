@@ -1,0 +1,1 @@
+export { fetchHistoricalAirPollution } from './airPollutionService'

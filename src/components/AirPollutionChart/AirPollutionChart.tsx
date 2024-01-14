@@ -13,7 +13,7 @@ import {
 } from 'recharts'
 import { useQuery } from '@tanstack/react-query'
 import { useGeoLocation } from '../GeoLocationProvider/GeoLocationProvider'
-import { fetchHistoricalAirPollution } from '@/services/api'
+import { fetchHistoricalAirPollution } from '@/services/airPollutionService'
 import { getDateInterval, processData, categoriesGraphLineDataMap, airQualityIndexMap } from './helpers'
 import { Category, TransformedDataItem } from './types'
 

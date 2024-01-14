@@ -1,4 +1,4 @@
-import { AirPollutionResponse, AirPollutionResponseListItem } from '@/services/types'
+import { AirPollutionResponse, AirPollutionResponseListItem } from '@/services/airPollutionService/types'
 import { parse, format, subMonths, startOfDay } from 'date-fns'
 import { Category, CategoryGraphLineData, TransformedDataItem } from './types'
 
