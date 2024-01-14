@@ -4,4 +4,5 @@ export type TransformedDataItem = {
   pop: number
   dayLabel: string
   hourLabel: string
+  hour: number
 }

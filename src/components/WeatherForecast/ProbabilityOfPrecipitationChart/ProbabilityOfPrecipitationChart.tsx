@@ -1,17 +1,8 @@
-import {
-  XAxis,
-  YAxis,
-  Legend,
-  ResponsiveContainer,
-  ReferenceLine,
-  CartesianGrid,
-  Tooltip,
-  Area,
-  AreaChart,
-} from 'recharts'
+import { XAxis, YAxis, Legend, ResponsiveContainer, ReferenceLine, Tooltip, Area, AreaChart } from 'recharts'
 import { useGeoLocation } from '../../GeoLocationProvider/GeoLocationProvider'
 import { formatProbability } from '../helpers'
 import { useWeatherForecastData } from '../useWeatherForecastData'
+import { CustomTooltip } from '../CustomTooltip'
 
 export const ProbabilityOfPrecipitationChart = () => {
   const { position } = useGeoLocation()
@@ -30,11 +21,11 @@ export const ProbabilityOfPrecipitationChart = () => {
           </div>
         ) : (
           <AreaChart data={query?.data?.processedData}>
-            <XAxis xAxisId="0" dataKey="hourLabel" interval={0} tick={{ fontSize: 9 }} />
+            <XAxis xAxisId="0" dataKey="hour" interval={0} tick={{ fontSize: 9 }} />
             <XAxis xAxisId="1" dataKey="dayLabel" allowDuplicatedCategory={false} />
             <YAxis tickFormatter={formatProbability} domain={['auto', 'auto']} />
             <Legend />
-            <Tooltip formatter={formatProbability} />
+            <Tooltip formatter={formatProbability} content={CustomTooltip} />
 
             {query.data?.dayLabels.map((dayLabel) => {
               return <ReferenceLine key={dayLabel} x={dayLabel} xAxisId="1" />

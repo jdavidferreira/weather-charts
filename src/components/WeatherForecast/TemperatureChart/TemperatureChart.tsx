@@ -1,17 +1,8 @@
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  Legend,
-  ResponsiveContainer,
-  ReferenceLine,
-  CartesianGrid,
-  Tooltip,
-} from 'recharts'
+import { LineChart, Line, XAxis, YAxis, Legend, ResponsiveContainer, ReferenceLine, Tooltip } from 'recharts'
 import { useGeoLocation } from '../../GeoLocationProvider/GeoLocationProvider'
 import { formatTemperature } from '../helpers'
 import { useWeatherForecastData } from '../useWeatherForecastData'
+import { CustomTooltip } from '../CustomTooltip'
 
 export const TemperatureChart = () => {
   const { position } = useGeoLocation()
@@ -30,11 +21,11 @@ export const TemperatureChart = () => {
           </div>
         ) : (
           <LineChart data={query.data?.processedData}>
-            <XAxis xAxisId="0" dataKey="hourLabel" interval={0} tick={{ fontSize: 9 }} />
+            <XAxis xAxisId="0" dataKey="hour" interval={0} tick={{ fontSize: 9 }} />
             <XAxis xAxisId="1" dataKey="dayLabel" allowDuplicatedCategory={false} />
             <YAxis tickFormatter={formatTemperature} domain={['auto', 'auto']} />
             <Legend />
-            <Tooltip formatter={formatTemperature} />
+            <Tooltip formatter={formatTemperature} content={CustomTooltip} />
 
             {query.data?.dayLabels.map((dayLabel) => {
               return <ReferenceLine key={dayLabel} x={dayLabel} xAxisId="1" />

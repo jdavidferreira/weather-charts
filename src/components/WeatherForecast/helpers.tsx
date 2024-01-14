@@ -20,7 +20,8 @@ export function processData(data?: FiveDayWeatherForecastResponse) {
     date = new Date(date.getTime() + userTimezoneOffset)
 
     const dayLabel = format(date, 'eeee dd')
-    const hourLabel = format(date, 'haaa')
+    const hourLabel = format(date, 'h:mm a')
+    const hour = Number(format(date, 'h'))
 
     dayLabelSet.add(dayLabel)
 
@@ -30,6 +31,7 @@ export function processData(data?: FiveDayWeatherForecastResponse) {
       date,
       dayLabel,
       hourLabel,
+      hour,
     }
   })
 
