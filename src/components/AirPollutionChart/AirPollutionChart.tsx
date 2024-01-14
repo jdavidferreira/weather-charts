@@ -28,13 +28,12 @@ export const AirPollutionChart = () => {
     queryKey: ['weather', position, dateInterval],
     queryFn: () => fetchHistoricalAirPollution({ position: position!, dateInterval }),
     enabled: !!position,
+    select: processData,
   })
 
   const toggleCategoryVisibility = (dataKey: Category) => {
     setActiveCategory(dataKey)
   }
-
-  const { processedData, meta } = useMemo(() => processData(query.data), [query.data])
 
   return (
     <div className="flex flex-col gap-6">
@@ -43,7 +42,7 @@ export const AirPollutionChart = () => {
         {query.isLoading ? (
           <LoadingBox />
         ) : (
-          <LineChart data={processedData}>
+          <LineChart data={query.data?.processedData}>
             <XAxis
               dataKey="dayStr"
               tick={<CustomizedAxisTick />}
@@ -62,7 +61,7 @@ export const AirPollutionChart = () => {
               }}
             />
             <Tooltip content={(props) => <CustomTooltip {...props} activeCategory={activeCategory} />} />
-            {meta?.map(({ monthName, startDateOfMonthStr }, idx) => {
+            {query.data?.meta.map(({ monthName, startDateOfMonthStr }, idx) => {
               return (
                 <ReferenceLine key={idx} x={startDateOfMonthStr} stroke="lightgray">
                   <Label value={monthName} offset={0} position="insideTop" />

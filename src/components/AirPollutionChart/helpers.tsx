@@ -4,7 +4,10 @@ import { Category, CategoryGraphLineData, TransformedDataItem } from './types'
 
 export function processData(data?: AirPollutionResponse) {
   if (!data) {
-    return {}
+    return {
+      processedData: [],
+      meta: [],
+    }
   }
   console.time('processing')
 
