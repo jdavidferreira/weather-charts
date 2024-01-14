@@ -25,7 +25,7 @@ export const AirPollutionChart = () => {
   const dateInterval = useMemo(() => getDateInterval(), [])
 
   const query = useQuery({
-    queryKey: ['weather', position, dateInterval],
+    queryKey: ['air_pollution_history', position, dateInterval],
     queryFn: () => fetchHistoricalAirPollution({ position: position!, dateInterval }),
     enabled: !!position,
     select: processData,
