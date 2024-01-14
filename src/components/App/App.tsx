@@ -2,6 +2,7 @@
 
 import { useGeoLocation } from '../GeoLocationProvider'
 import { AirPollutionChart } from '../AirPollutionChart'
+import { TemperatureChart } from '../TemperatureChart'
 
 export const App = () => {
   const { position } = useGeoLocation()
@@ -13,6 +14,7 @@ export const App = () => {
           <p>Latitude: {position.latitude}</p>
           <p>Longitude: {position.longitude}</p>
           <AirPollutionChart />
+          <TemperatureChart />
         </div>
       ) : (
         'Loading position...'
