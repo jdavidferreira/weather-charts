@@ -4,6 +4,7 @@ import { formatTemperature } from '../helpers'
 import { useWeatherForecastData } from '../useWeatherForecastData'
 import { CustomTooltip } from '../CustomTooltip'
 import { LoadingBox } from '@/components/LoadingBox'
+import { SectionContainer } from '@/components/SectionContainer'
 
 export const TemperatureChart = () => {
   const { position } = useGeoLocation()
@@ -13,8 +14,7 @@ export const TemperatureChart = () => {
   const name = 'Temperature'
 
   return (
-    <div className="flex flex-col gap-6">
-      <h2 className="text-xl text-slate-300 font-bold">{name} ☀️</h2>
+    <SectionContainer title={`${name} ☀️`}>
       <ResponsiveContainer width="100%" height={450}>
         {query.isLoading ? (
           <LoadingBox />
@@ -40,6 +40,6 @@ export const TemperatureChart = () => {
           </LineChart>
         )}
       </ResponsiveContainer>
-    </div>
+    </SectionContainer>
   )
 }

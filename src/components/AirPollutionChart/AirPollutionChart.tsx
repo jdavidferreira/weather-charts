@@ -17,6 +17,7 @@ import { fetchHistoricalAirPollution } from '@/services/airPollutionService'
 import { getDateInterval, processData, categoriesGraphLineDataMap, airQualityIndexMap } from './helpers'
 import { Category, TransformedDataItem } from './types'
 import { LoadingBox } from '../LoadingBox'
+import { SectionContainer } from '../SectionContainer'
 
 export const AirPollutionChart = () => {
   const { position } = useGeoLocation()
@@ -36,8 +37,7 @@ export const AirPollutionChart = () => {
   }
 
   return (
-    <div className="flex flex-col gap-6">
-      <h2 className="text-xl text-slate-300 font-bold">Air Pollution in the last 3 months 💨</h2>
+    <SectionContainer title="Air Pollution in the last 3 months 💨">
       <ResponsiveContainer width="100%" height={450}>
         {query.isLoading ? (
           <LoadingBox />
@@ -84,7 +84,7 @@ export const AirPollutionChart = () => {
           </LineChart>
         )}
       </ResponsiveContainer>
-    </div>
+    </SectionContainer>
   )
 }
 
