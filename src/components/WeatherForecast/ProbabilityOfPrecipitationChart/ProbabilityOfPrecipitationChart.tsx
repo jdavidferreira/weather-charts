@@ -14,7 +14,7 @@ export const ProbabilityOfPrecipitationChart = () => {
   const name = 'Probability of Precipitation'
 
   return (
-    <SectionContainer title={`${name} 🌧️`}>
+    <SectionContainer title={`${name} 🌧️`} titleClassName="text-lg">
       <ResponsiveContainer width="100%" height={450}>
         {query.isLoading ? (
           <LoadingBox />

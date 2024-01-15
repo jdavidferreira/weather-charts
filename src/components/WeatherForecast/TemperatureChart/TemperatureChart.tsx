@@ -14,7 +14,7 @@ export const TemperatureChart = () => {
   const name = 'Temperature'
 
   return (
-    <SectionContainer title={`${name} ☀️`}>
+    <SectionContainer title={`${name} ☀️`} titleClassName="text-lg">
       <ResponsiveContainer width="100%" height={450}>
         {query.isLoading ? (
           <LoadingBox />

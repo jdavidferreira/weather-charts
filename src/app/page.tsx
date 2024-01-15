@@ -2,7 +2,7 @@
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
-import { App } from '@/components/App/App'
+import { App } from '@/components/App'
 import { GeoLocationProvider } from '@/components/GeoLocationProvider'
 
 const queryClient = new QueryClient()
