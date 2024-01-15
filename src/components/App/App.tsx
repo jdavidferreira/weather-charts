@@ -12,9 +12,19 @@ export const App = () => {
   return (
     <div>
       {position ? (
-        <div>
-          <p>Latitude: {position.latitude}</p>
-          <p>Longitude: {position.longitude}</p>
+        <div className="relative">
+          <div className="absolute top-0 right-0">
+            <p>Latitude: {position.latitude}</p>
+            <p>Longitude: {position.longitude}</p>
+          </div>
+          <h1 className="text-4xl text-center mb-8">Weather Information</h1>
+          <div className="flex flex-col gap-7">
+            <AirPollutionChart />
+            <div className="grid grid-cols-2 gap-7">
+              <TemperatureChart />
+              <ProbabilityOfPrecipitationChart />
+            </div>
+          </div>
           <CurrentWeatherTable />
         </div>
       ) : (
