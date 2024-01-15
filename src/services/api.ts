@@ -12,13 +12,3 @@ export function getCommonSearchParams(position: Position) {
     appid: process.env.NEXT_PUBLIC_OPEN_WEATHER_API_KEY!,
   }
 }
-
-export async function fetchCurrentWeather(position: Position) {
-  const response = await api
-    .get('weather', {
-      searchParams: getCommonSearchParams(position),
-    })
-    .json()
-
-  return response
-}

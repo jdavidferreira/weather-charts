@@ -4,6 +4,7 @@ import { useGeoLocation } from '../GeoLocationProvider'
 import { AirPollutionChart } from '../AirPollutionChart'
 import { TemperatureChart } from '../WeatherForecast/TemperatureChart'
 import { ProbabilityOfPrecipitationChart } from '../WeatherForecast/ProbabilityOfPrecipitationChart'
+import { CurrentWeatherTable } from '../CurrentWeatherTable/CurrentWeatherTable'
 
 export const App = () => {
   const { position } = useGeoLocation()
@@ -14,13 +15,7 @@ export const App = () => {
         <div>
           <p>Latitude: {position.latitude}</p>
           <p>Longitude: {position.longitude}</p>
-          <div className="flex flex-col gap-6">
-            <AirPollutionChart />
-            <div className="grid grid-cols-2 gap-6">
-              <TemperatureChart />
-              <ProbabilityOfPrecipitationChart />
-            </div>
-          </div>
+          <CurrentWeatherTable />
         </div>
       ) : (
         'Loading position...'
