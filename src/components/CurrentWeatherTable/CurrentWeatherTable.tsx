@@ -1,11 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
 import { flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
-import { castArray } from 'lodash'
 
 import { fetchCurrentWeather } from '@/services/currentWeatherService'
 import { useGeoLocation } from '../GeoLocationProvider'
 import { LoadingBox } from '../LoadingBox'
-import { columns } from './helpers'
+import { castArray, columns } from './helpers'
 import { SectionContainer } from '../SectionContainer'
 
 export const CurrentWeatherTable = () => {

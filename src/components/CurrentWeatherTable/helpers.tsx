@@ -71,3 +71,5 @@ export const columns = [
 ]
 
 export const getIconUrl = (icon: string) => `https://openweathermap.org/img/wn/${icon}.png` as const
+
+export const castArray = <T,>(value: T) => [value]
